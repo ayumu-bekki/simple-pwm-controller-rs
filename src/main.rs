@@ -65,7 +65,7 @@ impl ButtonEventWatcher {
         Ok(Self {
             input_button,
             event_sender,
-            is_exec_event: Mutex::new(false),
+            is_exec_event: Mutex::new(true),
             last_button_state: Mutex::new(false),
             last_push_time: Mutex::new(0),
         })
@@ -130,7 +130,7 @@ struct MotorPowerManager {
 
 impl MotorPowerManager {
     const POWER_LEVEL_MAX: usize = 4; // OFFを含めたパワーレベル数
-    const POWER_LEVEL_PWM_TABLE: [f32; Self::POWER_LEVEL_MAX] = [0.0, 0.15, 0.4, 1.0]; // レベル別PWM設定テーブル
+    const POWER_LEVEL_PWM_TABLE: [f32; Self::POWER_LEVEL_MAX] = [0.0, 0.1, 0.3, 1.0]; // レベル別PWM設定テーブル
     const POWER_INDICATOR_MAX: usize = Self::POWER_LEVEL_MAX - 1; // LEDインジケーター数
     const PWM_FREQUENCY: Hertz = Hertz(25_000); // PWM周波数
 
